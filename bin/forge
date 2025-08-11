@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types=1);
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Forge\ApplicationFactory;
+
+$basePath = getcwd();
+
+$config = [];
+$cfgFile = $basePath . '/config/app.php';
+if (is_file($cfgFile)) {
+	$loaded = require $cfgFile;
+	if (is_array($loaded)) $config = $loaded;
+}
+
+$app = ApplicationFactory::make($basePath, $config);
+$app->run();
