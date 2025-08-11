@@ -1,2 +1,2 @@
-# forge
+# Forge
 Forge — a tiny Console+Termwind wrapper with an About command for custom frameworks.
