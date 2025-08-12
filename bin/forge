@@ -2,6 +2,25 @@
 <?php
 declare(strict_types=1);
 
+// Try common locations for Composer's autoloader
+$autoloadCandidates = [
+	__DIR__ . '/../../../autoload.php', // installed as dependency: vendor/your-vendor/forge/bin -> vendor/autoload.php
+	__DIR__ . '/../vendor/autoload.php', // running from the package repo (bin/ -> vendor/autoload.php)
+];
+
+$autoloader = null;
+foreach ($autoloadCandidates as $path) {
+	if (is_file($path)) {
+		$autoloader = require $path;
+		break;
+	}
+}
+
+if (!$autoloader) {
+	fwrite(STDERR, "Could not find Composer autoload.php. Run `composer install`.\n");
+	exit(1);
+}
+
 require __DIR__ . '/../vendor/autoload.php';
 
 use Forge\ApplicationFactory;
