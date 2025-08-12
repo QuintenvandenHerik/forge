@@ -26,7 +26,9 @@ class MakeMigrationCommand extends Command
 		// Ensure migrations directory exists
 		$migrationsPath = getcwd() . '/database/migrations';
 		if (!is_dir($migrationsPath)) {
-			mkdir($migrationsPath, 0777, true);
+			if (!mkdir($migrationsPath, 0777, true) && !is_dir($migrationsPath)) {
+				throw new \RuntimeException(sprintf('Directory "%s" was not created', $migrationsPath));
+			}
 		}
 
 		// Generate filename with timestamp
@@ -68,8 +70,8 @@ class MakeMigrationCommand extends Command
 		return <<<PHP
 <?php
 
-use YourFramework\\Database\\Migration;
-use YourFramework\\Database\\Schema;
+use Forge\\Database\\Migration;
+use Forge\\Database\\Schema;
 
 return new class extends Migration
 {
