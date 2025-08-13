@@ -52,9 +52,9 @@ class Builder implements BuilderContract {
 	/**
 	 * Create a new database Schema manager.
 	 *
-	 * @param Connection $connection
+	 * @param QueryProvider $connection
 	 */
-	public function __construct(Connection $connection)// TODO: To Pure PHP and QueryBuilder Support
+	public function __construct(QueryProvider|Connection $connection)// TODO: To Pure PHP and QueryBuilder Support
 	{
 		//		$this->connection = $connection;
 		//		$this->grammar = $connection->getSchemaGrammar();

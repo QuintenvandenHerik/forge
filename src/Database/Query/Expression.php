@@ -2,7 +2,7 @@
 
 namespace Forge\Database\Query;
 
-use Forge\Database\Query\ExpressionInterface as ExpressionContract;
+use Forge\Contracts\Database\Query\Expression as ExpressionContract;
 use Forge\Database\Grammar;
 
 /**

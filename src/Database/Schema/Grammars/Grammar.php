@@ -3,8 +3,8 @@
 namespace Forge\Database\Schema\Grammars;
 
 use BackedEnum;
-use Forge\Database\Query\ExpressionInterface as ExpressionContract;
-//use Forge\Database\Concerns\CompilesJsonPaths;
+use Forge\Contracts\Database\Query\Expression;
+use Forge\Database\Concerns\CompilesJsonPaths;
 use Forge\Database\Grammar as BaseGrammar;
 use Forge\Database\Schema\Blueprint;
 use Forge\Support\Fluent;
@@ -12,7 +12,7 @@ use RuntimeException;
 
 abstract class Grammar extends BaseGrammar
 {
-//    use CompilesJsonPaths;
+    use CompilesJsonPaths;
 
     /**
      * The possible column modifiers.
@@ -455,7 +455,7 @@ abstract class Grammar extends BaseGrammar
     /**
      * Wrap a value in keyword identifiers.
      *
-     * @param  \Forge\Support\Fluent|ExpressionContract|string  $value
+     * @param  \Forge\Support\Fluent|\Forge\Contracts\Database\Query\Expression|string  $value
      * @return string
      */
     public function wrap($value)

@@ -5,7 +5,6 @@ namespace Forge\Database\Schema;
 use Closure;
 use Forge\Database\Connection;
 use Forge\Database\Query\Expression;
-use Forge\Database\Query\ExpressionInterface as ExpressionContract;
 use Forge\Database\Schema\Grammars\Grammar;
 use Forge\Database\Schema\Grammars\MySqlGrammar;
 use Forge\Database\Schema\Grammars\SQLiteGrammar;

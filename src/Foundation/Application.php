@@ -6,6 +6,7 @@ namespace Forge\Foundation;
 
 use Closure;
 use Forge\Contracts\Foundation\Application as ApplicationContract;
+use Forge\Database\Schema\Builder as ShemaBuilder;
 use Forge\Support\Facades\Facade;
 use Forge\Container\Container;
 
@@ -35,6 +36,10 @@ class Application extends Container implements ApplicationContract {
 		Facade::clearResolvedInstances();
 		
 		Facade::setFacadeApplication($this);
+		
+		$this['db.schema'] = function () {
+			return new ShemaBuilder();
+		};
 	}
 	
 	/**

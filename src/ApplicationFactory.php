@@ -9,11 +9,14 @@ use Forge\Commands\MigrateInstallCommand;
 use Forge\Commands\MigrateRefreshCommand;
 use Forge\Commands\MigrateRollbackCommand;
 use Forge\Commands\MigrateStatusCommand;
+use Forge\Foundation\Application as Forge;
 use Forge\Support\AppInfo;
 use Forge\Commands\AboutCommand;
 use PDO;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
+
+require_once __DIR__ . '/Support/helpers.php';
 
 final class ApplicationFactory
 {
@@ -24,6 +27,8 @@ final class ApplicationFactory
 	 */
 	public static function make(string $basePath, array $config = [], array $extraCommands = []): Application
 	{
+		$forge = new Forge($basePath);
+		
 		$info = new AppInfo($basePath, $config);
 
 		$app = new Application($info->name(), $info->version());

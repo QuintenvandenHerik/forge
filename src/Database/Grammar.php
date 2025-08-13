@@ -2,12 +2,15 @@
 
 namespace Forge\Database;
 
-use Forge\Database\Query\ExpressionInterface as ExpressionContract;
+use Forge\Contracts\Database\Query\Expression;
 use Forge\Support\Collection;
+use Forge\Support\Traits\Macroable;
 use RuntimeException;
 
 abstract class Grammar
 {
+    use Macroable;
+
     /**
      * The connection used for escaping values.
      *
@@ -28,8 +31,7 @@ abstract class Grammar
     /**
      * Wrap an array of values.
      *
-     * @param  array<ExpressionContract|string>  $values
-     *
+     * @param  array<\Forge\Contracts\Database\Query\Expression|string>  $values
      * @return array<string>
      */
     public function wrapArray(array $values)
@@ -40,9 +42,8 @@ abstract class Grammar
     /**
      * Wrap a table in keyword identifiers.
      *
-     * @param ExpressionContract|string  $table
+     * @param  \Forge\Contracts\Database\Query\Expression|string  $table
      * @param  string|null  $prefix
-     *
      * @return string
      */
     public function wrapTable($table, $prefix = null)
@@ -77,8 +78,7 @@ abstract class Grammar
     /**
      * Wrap a value in keyword identifiers.
      *
-     * @param ExpressionContract|string  $value
-     *
+     * @param  \Forge\Contracts\Database\Query\Expression|string  $value
      * @return string
      */
     public function wrap($value)
@@ -190,8 +190,7 @@ abstract class Grammar
     /**
      * Convert an array of column names into a delimited string.
      *
-     * @param array<ExpressionContract|string>  $columns
-     *
+     * @param  array<\Forge\Contracts\Database\Query\Expression|string>  $columns
      * @return string
      */
     public function columnize(array $columns)
@@ -256,14 +255,13 @@ abstract class Grammar
      */
     public function isExpression($value)
     {
-        return $value instanceof ExpressionContract;
+        return $value instanceof Expression;
     }
 
     /**
      * Transforms expressions to their scalar types.
      *
-     * @param ExpressionContract|string|int|float  $expression
-     *
+     * @param  \Forge\Contracts\Database\Query\Expression|string|int|float  $expression
      * @return string|int|float
      */
     public function getValue($expression)

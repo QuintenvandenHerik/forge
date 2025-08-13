@@ -1,10 +1,10 @@
 <?php
 
-namespace Forge\Database\Query;
+namespace Forge\Contracts\Database\Query;
 
 use Forge\Database\Grammar;
 
-interface ExpressionInterface
+interface Expression
 {
     /**
      * Get the value of the expression.

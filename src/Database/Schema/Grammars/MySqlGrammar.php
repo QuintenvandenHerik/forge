@@ -5,7 +5,7 @@ namespace Forge\Database\Schema\Grammars;
 use Forge\Database\Query\Expression;
 use Forge\Database\Schema\Blueprint;
 use Forge\Database\Schema\ColumnDefinition;
-//use Forge\Support\Collection;
+use Forge\Support\Collection;
 use Forge\Support\Fluent;
 use RuntimeException;
 
@@ -352,7 +352,7 @@ class MySqlGrammar extends Grammar
      * @param  \Forge\Support\Fluent  $command
      * @return string
      */
-    protected function compileLegacyRenameColumn(Blueprint $blueprint, Fluent $command) // TODO: To Pure PHP and QueryBuilder Support
+    protected function compileLegacyRenameColumn(Blueprint $blueprint, Fluent $command)
     {
         $column = (new Collection($this->connection->getSchemaBuilder()->getColumns($blueprint->getTable())))
             ->firstWhere('name', $command->from);
@@ -698,7 +698,7 @@ class MySqlGrammar extends Grammar
      * @param  array<string>  $names
      * @return array<string>
      */
-    public function escapeNames($names) // TODO: To Pure PHP and QueryBuilder Support
+    public function escapeNames($names)
     {
         return array_map(
             fn ($name) => (new Collection(explode('.', $name)))->map($this->wrapValue(...))->implode('.'),
@@ -1377,17 +1377,17 @@ class MySqlGrammar extends Grammar
 
         return $value;
     }
-	
-	/**
-	 * Wrap the given JSON selector.
-	 *
-	 * @param  string  $value
-	 * @return string
-	 */
-	protected function wrapJsonSelector($value)
-	{
-		[$field, $path] = $this->wrapJsonFieldAndPath($value);
-		
-		return 'json_unquote(json_extract('.$field.$path.'))';
-	}
+
+    /**
+     * Wrap the given JSON selector.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    protected function wrapJsonSelector($value)
+    {
+        [$field, $path] = $this->wrapJsonFieldAndPath($value);
+
+        return 'json_unquote(json_extract('.$field.$path.'))';
+    }
 }
