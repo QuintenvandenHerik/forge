@@ -27,8 +27,5 @@
             "Forge\\": "src/"
         }
     },
-    "bin": [
-        "bin/forge"
-    ],
     "minimum-stability": "stable"
 }
