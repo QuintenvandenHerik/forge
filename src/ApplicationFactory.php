@@ -35,17 +35,6 @@ final class ApplicationFactory
 
 		// Built-ins
 		$app->add(new AboutCommand($info));
-		$app->add(new MakeMigrationCommand());
-
-		// Example: pass PDO connection into migration commands
-		$pdo = new PDO('mysql:host=127.0.0.1;dbname=test_forge', 'root', '');
-
-		$app->add($migrate       = new MigrateCommand($pdo));
-		$app->add($rollback      = new MigrateRollbackCommand($pdo));
-		$app->add($status        = new MigrateStatusCommand($pdo));
-		$app->add($refresh       = new MigrateRefreshCommand($rollback, $migrate));
-		$app->add($fresh         = new MigrateFreshCommand($pdo, $migrate));
-		$app->add($install       = new MigrateInstallCommand($pdo));
 
 		// Host extras
 		foreach ($extraCommands as $cmd) {
