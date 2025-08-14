@@ -5,6 +5,8 @@ namespace Forge\Container;
 use ArrayAccess;
 use Closure;
 use Exception;
+use Forge\Contracts\Container\BindingResolutionException;
+use Forge\Contracts\Container\CircularDependencyException;
 use Forge\Contracts\Container\Container as ContainerContract;
 use LogicException;
 use ReflectionAttribute;
