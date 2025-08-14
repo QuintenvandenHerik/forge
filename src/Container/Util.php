@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Container;
+namespace Forge\Container;
 
 use Closure;
 use Forge\Contracts\Container\ContextualAttribute;
