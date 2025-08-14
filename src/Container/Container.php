@@ -8,6 +8,8 @@ use Exception;
 use Forge\Contracts\Container\BindingResolutionException;
 use Forge\Contracts\Container\CircularDependencyException;
 use Forge\Contracts\Container\Container as ContainerContract;
+use Forge\Contracts\Container\ContextualAttribute;
+use Illuminate\Container\Util;
 use LogicException;
 use ReflectionAttribute;
 use ReflectionClass;
