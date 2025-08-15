@@ -15,7 +15,8 @@
         "symfony/console": "^7.3",
         "ext-mbstring": "*",
         "ext-mysqli": "*",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "symfony/finder": "^7.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.5",
